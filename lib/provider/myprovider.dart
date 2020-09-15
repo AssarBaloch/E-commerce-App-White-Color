@@ -267,6 +267,7 @@ class MyProvider with ChangeNotifier {
                   'OrderPrice': e.cartPrice,
                   'OrderTotalPrice': orderTotal,
                   'OrderQuantuty': e.cartQuantity,
+                  'OrderColor':e.cartColor,
                 },
               )
               .toList(),
@@ -287,8 +288,4 @@ class MyProvider with ChangeNotifier {
     }
   }
 
-  get counter {
-    int count = 0;
-    return count++;
-  }
 }

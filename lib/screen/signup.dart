@@ -180,7 +180,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                 ),
               ],
-              color: Color(0xff343843),
+              color: Theme.of(context).accentColor,
               borderRadius: BorderRadius.circular(8),
             ),
             height: 540,
@@ -243,8 +243,8 @@ class _SignUpPageState extends State<SignUpPage> {
               ? Container(
                   width: 110,
                   child: MyRasiedButton(
-                    colors: Color(0xff2f323b),
-                    textColors: Colors.white,
+                    colors: Theme.of(context).accentColor,
+                    textColors: Colors.black,
                     buttonText: 'SignUp',
                     whenPrassed: () async {
                       checkValid();
@@ -276,7 +276,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           'i already have an account',
                           style: TextStyle(
                             fontSize: 16,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                         ),
                       ),
@@ -294,7 +294,6 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff2f323b),
       key: myKey,
       body: Form(
         child: SafeArea(

@@ -98,7 +98,6 @@ class _SendMailState extends State<SendMail> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).accentColor,
         onPressed: () {
           sendMessage();
         },

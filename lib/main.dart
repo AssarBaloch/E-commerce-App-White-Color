@@ -6,6 +6,7 @@ import 'package:food_app/provider/myprovider.dart';
 import 'package:food_app/screen/home_screen.dart';
 import 'package:food_app/screen/login_page.dart';
 import 'package:food_app/test/home_pages.dart';
+import 'package:food_app/test/multiPa_language.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           primaryColor: Colors.white,
           accentColor: Color(0xfff6f6f6),
+          buttonColor: Color(0xffff5e2f),
         ),
         home: StreamBuilder(
           builder: (ctx, snapShot) {

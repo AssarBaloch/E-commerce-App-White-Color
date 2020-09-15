@@ -19,19 +19,19 @@ class SignUpAndLoginTextFeild extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: TextField(
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Colors.black),
         controller: controller,
         keyboardType: keyborad,
         obscureText: obscureText,
         decoration: InputDecoration(
-          counterStyle: TextStyle(color: Colors.white),
-          focusColor: Colors.white,
+          counterStyle: TextStyle(color: Colors.black),
+          focusColor: Colors.black,
           icon: Icon(
             iconData,
-            color: Colors.white,
+            color: Colors.black,
           ),
           hintStyle: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
           hintText: name,
         ),

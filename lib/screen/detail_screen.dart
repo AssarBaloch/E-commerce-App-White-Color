@@ -195,7 +195,6 @@ class _DetailScreenState extends State<DetailScreen> {
       height: 58,
       width: 290,
       child: RaisedButton(
-        color: Color(0xffff5e2f),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),

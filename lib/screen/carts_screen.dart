@@ -14,7 +14,6 @@ class CartScreen extends StatelessWidget {
         height: 50,
         width: 350,
         child: RaisedButton(
-          color: Colors.orange,
           onPressed: myProvider.getTotalCount() <= 0
               ? null
               : () async {
@@ -43,7 +42,7 @@ class CartScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 50,
+                width: 85,
               ),
               Text(
                 '\$${subTotal.toString()}',

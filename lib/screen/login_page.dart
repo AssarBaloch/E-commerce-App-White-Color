@@ -109,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-                color: Color(0xff343843),
+                color: Theme.of(context).accentColor,
                 boxShadow: [
                   BoxShadow(
                     color: Color.fromARGB(
@@ -175,10 +175,8 @@ class _LoginPageState extends State<LoginPage> {
               ? Container(
                   width: 110,
                   child: MyRasiedButton(
-                    colors: Color(
-                      0xff2f323b,
-                    ),
-                    textColors: Colors.white,
+                    colors: Theme.of(context).accentColor,
+                    textColors: Colors.black,
                     buttonText: 'Login',
                     whenPrassed: () {
                       checkValid();
@@ -208,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                         child: Text(
                           'Create new account',
-                          style: TextStyle(fontSize: 16, color: Colors.white),
+                          style: TextStyle(fontSize: 16, color: Colors.black),
                         ),
                       ),
                     ),
@@ -225,9 +223,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(
-        0xff2f323b,
-      ),
       key: myKey,
       body: Form(
         child: SafeArea(

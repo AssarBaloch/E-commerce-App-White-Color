@@ -25,16 +25,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   MyProvider myProvider;
-  int get late => 0;
-
-
-  PageController _pageController;
-  @override
-  void dispose() {
-    _pageController.dispose();
-
-    super.dispose();
-  }
 
   Widget useingCarouselProPackage() {
     return Container(
