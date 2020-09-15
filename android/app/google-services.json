@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "489730586202",
+    "firebase_url": "https://e-commerce-app-bb620.firebaseio.com",
+    "project_id": "e-commerce-app-bb620",
+    "storage_bucket": "e-commerce-app-bb620.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489730586202:android:e6601723665348f2d04a63",
+        "android_client_info": {
+          "package_name": "com.example.food_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489730586202-ar5kucb7t8iss7fnm5o9e04dgpo4s2lb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv-JN55y0hHZa_LzPz5_wAY2pIGL9h0oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489730586202-ar5kucb7t8iss7fnm5o9e04dgpo4s2lb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
