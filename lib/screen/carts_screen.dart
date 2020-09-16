@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/provider/myprovider.dart';
+import 'package:food_app/screen/home_screen.dart';
 import 'package:food_app/widgets/cart_product.dart';
 import 'package:provider/provider.dart';
 
@@ -156,9 +157,20 @@ class CartScreen extends StatelessWidget {
           'Cart',
           style: TextStyle(color: Colors.black),
         ),
+        centerTitle: true,
         elevation: 0.0,
         iconTheme: IconThemeData(
           color: Colors.black,
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (contex) => HomeScreen(),
+              ),
+            );
+          },
         ),
       ),
       body: Column(

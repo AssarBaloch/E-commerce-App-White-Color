@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget useingCarouselProPackage() {
     return Container(
-      height: 200,
+      height: 190,
       width: double.infinity,
       child: Carousel(
         boxFit: BoxFit.cover,
@@ -39,15 +39,9 @@ class _HomeScreenState extends State<HomeScreen> {
         dotIncreasedColor: Color(0xFFFF335C),
         showIndicator: false,
         images: [
-          NetworkImage(
-            'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
-          ),
-          NetworkImage(
-            'https://deep-image.ai/extra/slider-3-b.8cdacaf4.jpg',
-          ),
-          NetworkImage(
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGMf5RLsxY1VKguLz-6s6bhYUkC3xWrAmG3Q&usqp=CAU",
-          ),
+          AssetImage('images/image1.jpg'),
+          AssetImage('images/image2.jpg'),
+          AssetImage('images/image3.jpg')
         ],
       ),
     );

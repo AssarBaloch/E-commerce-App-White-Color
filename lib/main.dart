@@ -5,8 +5,6 @@ import 'package:food_app/provider/category.dart';
 import 'package:food_app/provider/myprovider.dart';
 import 'package:food_app/screen/home_screen.dart';
 import 'package:food_app/screen/login_page.dart';
-import 'package:food_app/test/home_pages.dart';
-import 'package:food_app/test/multiPa_language.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
