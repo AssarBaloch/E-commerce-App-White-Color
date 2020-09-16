@@ -39,7 +39,7 @@ class _SendMailState extends State<SendMail> {
   }
 
   void sendMessage() async {
-    await FirebaseFirestore.instance.collection('userMail').doc().set(
+    await FirebaseFirestore.instance.collection('UserMail').doc().set(
       {
         'userName': yourName.text,
         'userEmail': yourEmail.text,

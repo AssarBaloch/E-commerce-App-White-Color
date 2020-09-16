@@ -27,7 +27,31 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   MyProvider myProvider;
 
-  bool notifaction=false;
+  bool notifaction = false;
+
+  Widget useingCarouselProPackage() {
+    return Container(
+      height: 200,
+      width: double.infinity,
+      child: Carousel(
+        boxFit: BoxFit.cover,
+        dotSize: 6.0,
+        dotIncreasedColor: Color(0xFFFF335C),
+        showIndicator: false,
+        images: [
+          NetworkImage(
+            'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
+          ),
+          NetworkImage(
+            'https://deep-image.ai/extra/slider-3-b.8cdacaf4.jpg',
+          ),
+          NetworkImage(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGMf5RLsxY1VKguLz-6s6bhYUkC3xWrAmG3Q&usqp=CAU",
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget textFeild() {
     return Row(
@@ -239,35 +263,16 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            SizedBox(
-              height: 15,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Category',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 20),
+              child: Text(
+                'Category',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 17,
+                  fontWeight: FontWeight.bold,
                 ),
-                FlatButton(
-                  onPressed: () {},
-                  child: Text(
-                    'See All',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(
-              height: 20,
+              ),
             ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -293,9 +298,12 @@ class _HomeScreenState extends State<HomeScreen> {
     MyProvider provider = Provider.of<MyProvider>(context);
     List<ProductItemModel> extractLists = provider.getAllProductsList;
     return GridView.count(
-      childAspectRatio: 0.75,
+      childAspectRatio: 1.25,
+      scrollDirection: Axis.horizontal,
       // crossAxisSpacing: 20,
       crossAxisCount: 2,
+      reverse: true,
+      shrinkWrap: false,
       children: extractLists.map((element) {
         return ScoundPart(
           productImage: element.productImage,
@@ -469,26 +477,37 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(
               horizontal: 10,
             ),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  SizedBox(
-                    height: 20,
-                  ),
-                  textFeild(),
-                  categoryRow(context),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    height: 600,
-                    child: callingSecoundPart(
-                      context,
+            child: ListView(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 20,
                     ),
-                  ),
-                ],
-              ),
+                    useingCarouselProPackage(),
+                    categoryRow(context),
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20),
+                      child: Text(
+                        'Products',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 560,
+                      child: callingSecoundPart(
+                        context,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
