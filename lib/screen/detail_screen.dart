@@ -71,7 +71,7 @@ class _DetailScreenState extends State<DetailScreen> {
       margin: EdgeInsets.symmetric(
         horizontal: 15,
       ),
-      height: 350,
+      height: 300,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(widget.productImage),
@@ -130,6 +130,9 @@ class _DetailScreenState extends State<DetailScreen> {
               ),
               botttomPartRow(),
               callingCartButtomAndPrice(),
+              SizedBox(
+                height: 10,
+              ),
             ],
           ),
         ),

@@ -27,8 +27,8 @@ class _ScoundPartState extends State<ScoundPart> {
             InkWell(
               onTap: widget.whenPrassed,
               child: Container(
-                height: 210,
-                width: 190,
+                height: 190,
+                width: 170,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Color(0xffefefef),

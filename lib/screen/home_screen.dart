@@ -292,9 +292,8 @@ class _HomeScreenState extends State<HomeScreen> {
     MyProvider provider = Provider.of<MyProvider>(context);
     List<ProductItemModel> extractLists = provider.getAllProductsList;
     return GridView.count(
-      childAspectRatio: 1.25,
+      childAspectRatio: 7.0 / 5.0,
       scrollDirection: Axis.horizontal,
-      // crossAxisSpacing: 20,
       crossAxisCount: 2,
       reverse: true,
       shrinkWrap: false,
