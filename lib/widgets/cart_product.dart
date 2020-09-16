@@ -8,14 +8,12 @@ class CardProducts extends StatefulWidget {
   final double productPrice;
   final String productColor;
   int productQuantity;
-  double total;
   CardProducts({
     this.productColor,
     this.productPrice,
     this.productName,
     this.productImage,
     this.productQuantity,
-    this.total,
   });
 
   @override
@@ -67,26 +65,12 @@ class _CardProductsState extends State<CardProducts> {
         children: [
           IconButton(
             icon: Icon(Icons.add_circle_outline),
-            onPressed: () {
-              setState(
-                () {
-                  if (widget.productQuantity < 10) {
-                    widget.productQuantity++;
-                  }
-                },
-              );
-            },
+            onPressed: add,
           ),
           Text(widget.productQuantity.toString()),
           IconButton(
             icon: Icon(Icons.remove_circle_outline),
-            onPressed: () {
-              setState(() {
-                if (widget.productQuantity > 1) {
-                  widget.productQuantity--;
-                }
-              });
-            },
+            onPressed: minus,
           ),
         ],
       ),
@@ -94,6 +78,18 @@ class _CardProductsState extends State<CardProducts> {
   }
 
   MyProvider myProvider;
+
+  void add() {
+    setState(() {
+      widget.productQuantity++;
+    });
+  }
+
+  void minus() {
+    setState(() {
+      if (widget.productQuantity != 1) widget.productQuantity--;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -13,6 +13,7 @@ import 'package:food_app/screen/carts_screen.dart';
 import 'package:food_app/screen/detail_screen.dart';
 import 'package:food_app/screen/profile_screen.dart';
 import 'package:food_app/screen/send_mail.dart';
+import 'package:food_app/widgets/notifaction.dart';
 import 'package:food_app/widgets/scound_part.dart';
 import 'package:provider/provider.dart';
 
@@ -26,29 +27,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   MyProvider myProvider;
 
-  Widget useingCarouselProPackage() {
-    return Container(
-      height: 220,
-      width: double.infinity,
-      child: Carousel(
-        boxFit: BoxFit.cover,
-        dotSize: 6.0,
-        dotIncreasedColor: Color(0xFFFF335C),
-        showIndicator: false,
-        images: [
-          NetworkImage(
-            'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg',
-          ),
-          NetworkImage(
-            'https://deep-image.ai/extra/slider-3-b.8cdacaf4.jpg',
-          ),
-          NetworkImage(
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQGMf5RLsxY1VKguLz-6s6bhYUkC3xWrAmG3Q&usqp=CAU",
-          ),
-        ],
-      ),
-    );
-  }
+  bool notifaction=false;
 
   Widget textFeild() {
     return Row(
@@ -314,10 +293,9 @@ class _HomeScreenState extends State<HomeScreen> {
     MyProvider provider = Provider.of<MyProvider>(context);
     List<ProductItemModel> extractLists = provider.getAllProductsList;
     return GridView.count(
-      childAspectRatio: 1.40,
+      childAspectRatio: 0.75,
       // crossAxisSpacing: 20,
       crossAxisCount: 2,
-      scrollDirection: Axis.horizontal,
       children: extractLists.map((element) {
         return ScoundPart(
           productImage: element.productImage,
@@ -393,16 +371,15 @@ class _HomeScreenState extends State<HomeScreen> {
             listTileName: 'Shop',
             whenPressed: () {},
           ),
-          listTileDrawer(
-            iconData: Icons.add_shopping_cart,
-            listTileName: 'My Cart',
-            whenPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => CartScreen(),
-                ),
-              );
-            },
+          ListTile(
+            leading: Notifications(),
+            title: Text(
+              'My Cart',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+              ),
+            ),
           ),
           listTileDrawer(
             iconData: Icons.person_outline,
@@ -477,50 +454,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         elevation: 0.0,
         actions: <Widget>[
-          Stack(
-            children: [
-              IconButton(
-                icon: Icon(
-                  Icons.add_shopping_cart,
-                ),
-                onPressed: () {
-                  setState(() {
-                    widget.counter = 0;
-                  });
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => CartScreen(),
-                    ),
-                  );
-                },
-              ),
-              widget.counter != 0
-                  ? Positioned(
-                      right: 11,
-                      top: 11,
-                      child: Container(
-                        padding: EdgeInsets.all(2),
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        constraints: BoxConstraints(
-                          minWidth: 14,
-                          minHeight: 14,
-                        ),
-                        child: Text(
-                          widget.counter.toString(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    )
-                  : Container(),
-            ],
-          ),
+          Notifications(),
         ],
       ),
       body: FadeAnimtion(

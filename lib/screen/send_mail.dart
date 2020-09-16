@@ -97,9 +97,10 @@ class _SendMailState extends State<SendMail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: myKey,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          sendMessage();
+          checkValid();
         },
         child: Icon(Icons.send),
       ),

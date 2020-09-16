@@ -129,7 +129,6 @@ class CartScreen extends StatelessWidget {
         productName: allCartProduct[index].cartName,
         productPrice: allCartProduct[index].cartPrice,
         productQuantity: allCartProduct[index].cartQuantity,
-        total: myProvider.getTotalCount(),
         productColor: allCartProduct[index].cartColor,
       ),
     );

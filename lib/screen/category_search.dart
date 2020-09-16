@@ -37,43 +37,10 @@ class CategorySearch extends SearchDelegate<ProductItemModel> {
     MyProvider provider = Provider.of<MyProvider>(context);
 
     List<ProductItemModel> _searchProduct = provider.productSearch(query);
-    return Container(
-      color: Colors.black87,
-      child: GridView.count(
-        padding: EdgeInsets.only(left: 17),
-          crossAxisCount: 2,
-          childAspectRatio: 0.70,
-          children: _searchProduct.map<Widget>(
-            (e) {
-              return ScoundPart(
-                productImage: e.productImage??'',
-                productName: e.productName,
-                productPrice: e.productPrice,
-                whenPrassed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => DetailScreen(),
-                    ),
-                  );
-                },
-              );
-            },
-          ).toList()),
-    );
-  }
- 
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    MyProvider provider = Provider.of<MyProvider>(context);
-
-    List<ProductItemModel> _searchProduct = provider.productSearch(query);
-    return Container(
-      height: double.infinity,
-      width: double.infinity,
-      color: Colors.black87,
-      child: GridView.count(
-        childAspectRatio: 0.70,
+    return GridView.count(
+      padding: EdgeInsets.only(left: 17),
         crossAxisCount: 2,
+        childAspectRatio: 0.70,
         children: _searchProduct.map<Widget>(
           (e) {
             return ScoundPart(
@@ -89,8 +56,33 @@ class CategorySearch extends SearchDelegate<ProductItemModel> {
               },
             );
           },
-        ).toList(),
-      ),
+        ).toList());
+  }
+ 
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    MyProvider provider = Provider.of<MyProvider>(context);
+
+    List<ProductItemModel> _searchProduct = provider.productSearch(query);
+    return GridView.count(
+      childAspectRatio: 0.70,
+      crossAxisCount: 2,
+      children: _searchProduct.map<Widget>(
+        (e) {
+          return ScoundPart(
+            productImage: e.productImage??'',
+            productName: e.productName,
+            productPrice: e.productPrice,
+            whenPrassed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => DetailScreen(),
+                ),
+              );
+            },
+          );
+        },
+      ).toList(),
     );
   }
 }

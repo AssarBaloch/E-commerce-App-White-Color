@@ -19,12 +19,25 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  int quantity = 1;
+  int _quantity = 1;
   int counter = 1;
   List<bool> isSelected = [false, true, false, false, false];
 
   int indexColor = 0;
   String selectedColor;
+
+  void add() {
+    setState(() {
+      _quantity++;
+    });
+  }
+
+  void minus() {
+    setState(() {
+      if (_quantity != 1) _quantity--;
+    });
+  }
+
   void cartColor() {
     if (indexColor == 0) {
       setState(() {
@@ -136,32 +149,16 @@ class _DetailScreenState extends State<DetailScreen> {
         children: <Widget>[
           Expanded(
             child: IconButton(
-              onPressed: () {
-                setState(
-                  () {
-                    if (quantity > 1) {
-                      quantity--;
-                    }
-                  },
-                );
-              },
+              onPressed: minus,
               icon: Icon(
                 Icons.remove,
               ),
             ),
           ),
-          Text('${quantity.toString()}'),
+          Text(_quantity.toString()),
           Expanded(
             child: IconButton(
-              onPressed: () {
-                setState(
-                  () {
-                    if (quantity < 10) {
-                      quantity++;
-                    }
-                  },
-                );
-              },
+              onPressed: add,
               icon: Icon(Icons.add),
             ),
           ),
@@ -201,14 +198,13 @@ class _DetailScreenState extends State<DetailScreen> {
         onPressed: () {
           cartColor();
           setState(() {
-            counter++;
-            print(counter);
+            myProvider.addNotification('assaer');
           });
           myProvider.addCartProduct(
             cartImage: widget.productImage,
             cartName: widget.productName,
             cartPrice: widget.productPrice,
-            cartQuantity: quantity,
+            cartQuantity: _quantity,
             cartColor: selectedColor,
           );
           Navigator.of(context).push(
@@ -230,7 +226,7 @@ class _DetailScreenState extends State<DetailScreen> {
 
   Widget cartPrice() {
     return Text(
-      '\$${quantity * widget.productPrice.floorToDouble()}',
+      '\$${_quantity * widget.productPrice.floorToDouble()}',
       style: TextStyle(
         color: Colors.black,
         fontSize: 20,

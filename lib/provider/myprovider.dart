@@ -47,6 +47,7 @@ class MyProvider with ChangeNotifier {
     return total;
   }
 
+ 
   // int inindex;
   // void deleteIndex(int index) {
   //   inindex = index;
@@ -241,6 +242,26 @@ class MyProvider with ChangeNotifier {
     return searchFood;
   }
 
+
+/////////////notiFaction////////////
+  List<String> notifireList = [];
+
+  void addNotification(String notification) {
+    notifireList.add(notification);
+  }
+
+  int get getNotificationIndex {
+    return notifireList.length;
+  }
+
+  get getNotificationList {
+    return notifireList;
+  }
+
+
+
+//////////////////Order///////////////////////
+
   List<Order> _order = [];
   List<Order> get orders {
     return [..._order];
@@ -267,7 +288,7 @@ class MyProvider with ChangeNotifier {
                   'OrderPrice': e.cartPrice,
                   'OrderTotalPrice': orderTotal,
                   'OrderQuantuty': e.cartQuantity,
-                  'OrderColor':e.cartColor,
+                  'OrderColor': e.cartColor,
                 },
               )
               .toList(),
@@ -287,5 +308,4 @@ class MyProvider with ChangeNotifier {
       throw err;
     }
   }
-
 }
