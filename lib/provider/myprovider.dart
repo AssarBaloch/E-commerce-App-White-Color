@@ -39,19 +39,6 @@ class MyProvider with ChangeNotifier {
     return _cartProductList;
   }
 
-  getTotalCount() {
-    double total = 0.0;
-    _cartProductList.forEach((element) {
-      total += element.cartPrice * element.cartQuantity;
-    });
-    return total;
-  }
-
- 
-  // int inindex;
-  // void deleteIndex(int index) {
-  //   inindex = index;
-  // }
   void delete(int index) {
     _cartProductList.removeAt(index);
 
@@ -242,7 +229,6 @@ class MyProvider with ChangeNotifier {
     return searchFood;
   }
 
-
 /////////////notiFaction////////////
   List<String> notifireList = [];
 
@@ -258,8 +244,6 @@ class MyProvider with ChangeNotifier {
     return notifireList;
   }
 
-
-
 //////////////////Order///////////////////////
 
   List<Order> _order = [];
@@ -268,13 +252,14 @@ class MyProvider with ChangeNotifier {
   }
 
   Future<void> addOrder(
-      List<CartProduct> cartProducts, double orderTotal) async {
+    List<CartProduct> cartProducts,
+  ) async {
     final timeDate = DateTime.now();
     try {
       await FirebaseFirestore.instance.collection('Order').doc().set(
         {
           'id': DateTime.now().toString(),
-          'amount': orderTotal,
+          'amount': taxProductprice(),
           'dateTime': timeDate.toIso8601String(),
           'userImage': _users.userImage,
           'userName': _users.fullName,
@@ -286,7 +271,7 @@ class MyProvider with ChangeNotifier {
                   'OrderName': e.cartName,
                   'OrderImage': e.cartImage,
                   'OrderPrice': e.cartPrice,
-                  'OrderTotalPrice': orderTotal,
+                  'OrderTotalPrice': taxProductprice(),
                   'OrderQuantuty': e.cartQuantity,
                   'OrderColor': e.cartColor,
                 },
@@ -300,12 +285,28 @@ class MyProvider with ChangeNotifier {
           orderDateTime: timeDate,
           orderId: DateTime.now().toString(),
           orderProduct: cartProducts,
-          orderTotal: orderTotal,
+          orderTotal: taxProductprice(),
         ),
       );
       notifyListeners();
     } catch (err) {
       throw err;
     }
+  }
+
+///////////////// Function //////////////////////
+
+  getTotalCount() {
+    double total = 0.0;
+    _cartProductList.forEach((element) {
+      total += element.cartPrice * element.cartQuantity;
+    });
+    return total;
+  }
+
+  taxProductprice() {
+    double taxTotal = 0;
+    taxTotal = getTotalCount() * (1 + 0.2);
+    return taxTotal;
   }
 }

@@ -326,7 +326,6 @@ class _DetailScreenState extends State<DetailScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        margin: EdgeInsets.symmetric(horizontal: 8),
         child: Column(
           children: <Widget>[
             topImage(),

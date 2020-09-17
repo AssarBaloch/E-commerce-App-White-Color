@@ -21,7 +21,6 @@ class CartScreen extends StatelessWidget {
                   await Provider.of<MyProvider>(context, listen: false)
                       .addOrder(
                     myProvider.allCartProducts.toList(),
-                    myProvider.getTotalCount(),
                   );
 
                   myProvider.allCartProducts.clear();
@@ -64,15 +63,20 @@ class CartScreen extends StatelessWidget {
 
   Widget dissmis(BuildContext context, int index) {
     var allCartProduct = myProvider.allCartProductList;
-
     return Dismissible(
       confirmDismiss: (direction) {
         return showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text('Delete'),
-              content: Text('Are you sure ?'),
+              title: Text(
+                'Delete',
+                style: TextStyle(color: Colors.black),
+              ),
+              content: Text(
+                'Are you sure ?',
+                style: TextStyle(color: Colors.black),
+              ),
               actions: <Widget>[
                 FlatButton(
                   onPressed: () {
@@ -80,7 +84,10 @@ class CartScreen extends StatelessWidget {
                       context,
                     ).pop(false);
                   },
-                  child: Text('No'),
+                  child: Text(
+                    'No',
+                    style: TextStyle(color: Colors.black),
+                  ),
                 ),
                 FlatButton(
                   onPressed: () {
@@ -91,7 +98,7 @@ class CartScreen extends StatelessWidget {
                   child: Container(
                     height: 40,
                     width: 70,
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.red,
                     child: Center(
                       child: Text(
                         'Yes',
@@ -139,18 +146,22 @@ class CartScreen extends StatelessWidget {
     return ListTile(
       leading: Text(
         name,
-        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
       trailing: Text(
-        '\$$price',
-        style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+        '\$${price.floorToDouble()}',
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    double total = 0;
     myProvider = Provider.of<MyProvider>(context);
+
+    total = myProvider.getTotalCount() * (1 + 0.2);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -217,13 +228,22 @@ class CartScreen extends StatelessWidget {
                         price: myProvider.getTotalCount(),
                       ),
                       checkOut(
-                        name: 'TAX(20%)',
-                        price: myProvider.getTotalCount(),
+                        name: 'Tax (% 20)',
+                        price: total,
                       ),
-                      cartScreenButton(
-                        context,
-                        myProvider.getTotalCount(),
-                      ),
+                      // ListTile(
+                      //   leading: Text(
+                      //     'Tax',
+                      //     style: TextStyle(
+                      //         fontSize: 20, fontWeight: FontWeight.bold),
+                      //   ),
+                      //   trailing: Text(
+                      //     '\%(20)',
+                      //     style: TextStyle(
+                      //         fontSize: 20, fontWeight: FontWeight.bold),
+                      //   ),
+                      // ),
+                      cartScreenButton(context, total.floorToDouble()),
                     ],
                   ),
                 ),

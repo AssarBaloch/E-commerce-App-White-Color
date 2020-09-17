@@ -12,14 +12,14 @@ class CategoryProvider with ChangeNotifier {
     List<Category> newEarplugListCategory = [];
     QuerySnapshot allProduct = await FirebaseFirestore.instance
         .collection('Category')
-        .doc('4hFOC8UaBXMwUd4vLrwp')
-        .collection('WaterCooler')
+        .doc('GQDkbRl0Aw6OWIOQHNoo')
+        .collection('Wathercooler')
         .get();
     allProduct.docs.forEach(
       (snapShot) {
         earplugCategory = Category(
-          categoryImage: snapShot.data()['WaterCoolCategoryImage'],
-        categoryName:  snapShot.data()['WaterCoolCategoryName'],
+          categoryImage: snapShot.data()['CategoryImage'],
+        categoryName:  snapShot.data()['CategoryName'],
         );
         newEarplugListCategory.add(earplugCategory);
       },
@@ -41,14 +41,14 @@ class CategoryProvider with ChangeNotifier {
     List<Category> newBluetoothListCategory = [];
     QuerySnapshot allBluetoothProduct = await FirebaseFirestore.instance
         .collection('Category')
-        .doc('4hFOC8UaBXMwUd4vLrwp')
+        .doc('GQDkbRl0Aw6OWIOQHNoo')
         .collection('Pc')
         .get();
     allBluetoothProduct.docs.forEach(
       (snapShot) {
         bluetoothCategory = Category(
-          categoryImage: snapShot.data()['PcCategoryImage'],
-          categoryName: snapShot.data()['PcCategoryName'],
+          categoryImage: snapShot.data()['CategoryImage'],
+          categoryName: snapShot.data()['CategoryName'],
         );
         newBluetoothListCategory.add(bluetoothCategory);
       },
@@ -68,15 +68,15 @@ class CategoryProvider with ChangeNotifier {
     List<Category> newlaptopListCategory = [];
     QuerySnapshot allLaptopProduct = await FirebaseFirestore.instance
         .collection('Category')
-        .doc('4hFOC8UaBXMwUd4vLrwp')
+        .doc('GQDkbRl0Aw6OWIOQHNoo')
         .collection('Laptop')
         .get();
     allLaptopProduct.docs.forEach(
       (snapShot) {
         laptopCategory = Category(
 
-          categoryImage: snapShot.data()['LaptopCategoryImage'],
-        categoryName: snapShot.data()['LaptopCategoryName'],
+          categoryImage: snapShot.data()['CategoryImage'],
+        categoryName: snapShot.data()['CategoryName'],
         );
         newlaptopListCategory.add(laptopCategory);
       },
@@ -95,13 +95,13 @@ class CategoryProvider with ChangeNotifier {
 fetchAllDrslCamaraCategory() async {
     List<Category> newDrslCamaraListCategory = [];
     QuerySnapshot allDrslCamaraProduct = await FirebaseFirestore.instance
-        .collection('Category').doc('4hFOC8UaBXMwUd4vLrwp').collection('Drslcamara').get();
+        .collection('Category').doc('GQDkbRl0Aw6OWIOQHNoo').collection('DrslCamara').get();
        
     allDrslCamaraProduct.docs.forEach(
       (snapShot) {
         drslCamaraCategory = Category(
-          categoryImage: snapShot.data()['DrslcamaCategoryImage'],
-          categoryName: snapShot.data()['DrslcamaCategoryName'],
+          categoryImage: snapShot.data()['CategoryImage'],
+          categoryName: snapShot.data()['CategoryName'],
         );
         newDrslCamaraListCategory.add(drslCamaraCategory);
       },

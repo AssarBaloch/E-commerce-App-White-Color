@@ -8,6 +8,7 @@ import 'package:food_app/model/product_item_model.dart';
 import 'package:food_app/model/user.dart';
 import 'package:food_app/provider/category.dart';
 import 'package:food_app/provider/myprovider.dart';
+import 'package:food_app/screen/about_screen.dart';
 import 'package:food_app/screen/category_screen.dart';
 import 'package:food_app/screen/carts_screen.dart';
 import 'package:food_app/screen/detail_screen.dart';
@@ -291,31 +292,32 @@ class _HomeScreenState extends State<HomeScreen> {
   ) {
     MyProvider provider = Provider.of<MyProvider>(context);
     List<ProductItemModel> extractLists = provider.getAllProductsList;
-    return GridView.count(
-      childAspectRatio: 7.0 / 5.0,
+    return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      crossAxisCount: 2,
-      reverse: true,
-      shrinkWrap: false,
-      children: extractLists.map((element) {
-        return ScoundPart(
-          productImage: element.productImage,
-          productName: element.productName,
-          productPrice: element.productPrice,
-          whenPrassed: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DetailScreen(
-                  // counter: counter,
-                  productImage: element.productImage,
-                  productName: element.productName,
-                  productPrice: element.productPrice,
-                ),
-              ),
-            );
-          },
-        );
-      }).toList(),
+      child: Row(
+        children: extractLists.map((element) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: ScoundPart(
+              productImage: element.productImage,
+              productName: element.productName,
+              productPrice: element.productPrice,
+              whenPrassed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => DetailScreen(
+                      // counter: counter,
+                      productImage: element.productImage,
+                      productName: element.productName,
+                      productPrice: element.productPrice,
+                    ),
+                  ),
+                );
+              },
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 
@@ -389,6 +391,17 @@ class _HomeScreenState extends State<HomeScreen> {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => ProfileScreen(),
+                ),
+              );
+            },
+          ),
+           listTileDrawer(
+            iconData: Icons.info,
+            listTileName: 'About',
+            whenPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => AboutScrren(),
                 ),
               );
             },
@@ -492,11 +505,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    Container(
-                      height: 560,
-                      child: callingSecoundPart(
-                        context,
-                      ),
+                    callingSecoundPart(
+                      context,
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    callingSecoundPart(
+                      context,
                     ),
                   ],
                 ),

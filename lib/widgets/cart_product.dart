@@ -110,6 +110,7 @@ class _CardProductsState extends State<CardProducts> {
               Row(
                 children: [
                   Container(
+                    width: 120,
                     child: Image.network(widget.productImage),
                   ),
                   fristRow(),

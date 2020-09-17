@@ -268,7 +268,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     MyProvider myProvider = Provider.of<MyProvider>(context);
     myProvider.fetchUserData();
     Users currentUsers = myProvider.getCurrrentUser;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
