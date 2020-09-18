@@ -71,7 +71,7 @@ class _DetailScreenState extends State<DetailScreen> {
       margin: EdgeInsets.symmetric(
         horizontal: 15,
       ),
-      height: 300,
+      height: 280,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(widget.productImage),
@@ -83,58 +83,54 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   Widget bottomPart() {
-    return Expanded(
-      flex: 2,
-      child: Container(
-        child: ListTile(
-          title: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              callingFacoriteAndProductName(),
-              Text(
-                'Color',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 19,
-                ),
+    return Container(
+      height: 430,
+      width: double.infinity,
+      child: ListTile(
+        title: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            callingFacoriteAndProductName(),
+            Text(
+              'Color',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 19,
               ),
-              ToggleButtons(
-                color: Colors.red,
-                selectedColor: Colors.red,
-                renderBorder: false,
-                children: <Widget>[
-                  circleColor(color: Colors.black),
-                  circleColor(color: Colors.grey),
-                  circleColor(color: Colors.blue[300]),
-                  circleColor(color: Colors.red[300]),
-                  circleColor(color: Colors.orange[300])
-                ],
-                onPressed: (int index) {
-                  setState(() {
-                    for (int indexBtn = 0;
-                        indexBtn < isSelected.length;
-                        indexBtn++) {
-                      if (indexBtn == index) {
-                        isSelected[indexBtn] = !isSelected[indexBtn];
-                      } else {
-                        isSelected[indexBtn] = false;
-                      }
+            ),
+            ToggleButtons(
+              color: Colors.red,
+              selectedColor: Colors.red,
+              renderBorder: false,
+              children: <Widget>[
+                circleColor(color: Colors.black),
+                circleColor(color: Colors.grey),
+                circleColor(color: Colors.blue[300]),
+                circleColor(color: Colors.red[300]),
+                circleColor(color: Colors.orange[300])
+              ],
+              onPressed: (int index) {
+                setState(() {
+                  for (int indexBtn = 0;
+                      indexBtn < isSelected.length;
+                      indexBtn++) {
+                    if (indexBtn == index) {
+                      isSelected[indexBtn] = !isSelected[indexBtn];
+                    } else {
+                      isSelected[indexBtn] = false;
                     }
-                  });
-                  setState(() {
-                    indexColor = index;
-                  });
-                },
-                isSelected: isSelected,
-              ),
-              botttomPartRow(),
-              callingCartButtomAndPrice(),
-              SizedBox(
-                height: 10,
-              ),
-            ],
-          ),
+                  }
+                });
+                setState(() {
+                  indexColor = index;
+                });
+              },
+              isSelected: isSelected,
+            ),
+            botttomPartRow(),
+            callingCartButtomAndPrice(),
+          ],
         ),
       ),
     );
@@ -193,7 +189,7 @@ class _DetailScreenState extends State<DetailScreen> {
     MyProvider myProvider = Provider.of<MyProvider>(context);
     return Container(
       height: 58,
-      width: 290,
+      width: 260,
       child: RaisedButton(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -239,12 +235,17 @@ class _DetailScreenState extends State<DetailScreen> {
   }
 
   Widget callingCartButtomAndPrice() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        cartPrice(),
-        addCartButtom(),
-      ],
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          cartPrice(),
+          SizedBox(
+            width: 15,
+          ),
+          addCartButtom(),
+        ],
+      ),
     );
   }
 
@@ -326,7 +327,7 @@ class _DetailScreenState extends State<DetailScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        child: Column(
+        child: ListView(
           children: <Widget>[
             topImage(),
             bottomPart(),

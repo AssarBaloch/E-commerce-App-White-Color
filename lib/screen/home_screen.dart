@@ -297,12 +297,14 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(
         children: extractLists.map((element) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding:  EdgeInsets.symmetric(horizontal: 10),
             child: ScoundPart(
               productImage: element.productImage,
               productName: element.productName,
               productPrice: element.productPrice,
               whenPrassed: () {
+
+              
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => DetailScreen(
